@@ -1,6 +1,7 @@
 import Head from "next/head";
+import Nav from "../components/nav";
 
-export default function Home() {
+export default function IndexPage() {
   return (
     <div className="container">
       <Head>
@@ -9,7 +10,10 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Hello World</h1>
+        <Nav />
+        <div className="hero">
+          <h1 className="title">Next.js + Tailwind CSS</h1>
+        </div>
       </main>
     </div>
   );
