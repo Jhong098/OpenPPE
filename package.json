@@ -8,12 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "mongodb": "^3.5.7",
-    "next": "9.3.6",
+    "next": "^9.4.0",
     "next-connect": "^0.6.6",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.4.6",
+    "validator": "^13.0.0"
   },
   "devDependencies": {
     "postcss-preset-env": "^6.7.0"
