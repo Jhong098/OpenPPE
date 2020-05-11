@@ -12,7 +12,7 @@ export default function Browse({ requests }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/request");
+  const res = await fetch("http://localhost:3000/api/requests");
   const requests = await res.json();
 
   return {
