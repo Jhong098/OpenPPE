@@ -7,12 +7,14 @@ const COLLECTION = "requests";
 
 handler.use(middleware);
 
+// Get all requests
 handler.get(async (req, res) => {
   console.log("in requests");
   const doc = await req.db.collection(COLLECTION).find().toArray();
   res.json(doc);
 });
 
+// add a request
 handler.post(async (req, res) => {
   console.log(req.body);
   let data = req.body;

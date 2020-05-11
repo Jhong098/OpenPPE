@@ -8,6 +8,7 @@ const COLLECTION = "requests";
 
 handler.use(middleware);
 
+// get a request by ID
 handler.get(async (req, res) => {
   const {
     query: { requestId },
@@ -19,6 +20,7 @@ handler.get(async (req, res) => {
   res.json(doc);
 });
 
+// update a request by id
 handler.put(async (req, res) => {
   const {
     query: { requestId },
@@ -38,6 +40,7 @@ handler.put(async (req, res) => {
   res.json(doc);
 });
 
+// delete a request by id
 handler.delete(async (req, res) => {
   const {
     query: { requestId },
