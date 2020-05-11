@@ -11,7 +11,7 @@ handler.use(middleware);
 handler.get(async (req, res) => {
   console.log("in requests");
   const doc = await req.db.collection(COLLECTION).find().toArray();
-  res.json(doc);
+  res.status(200).json(doc);
 });
 
 // add a request

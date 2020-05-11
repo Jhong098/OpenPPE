@@ -1,23 +1,20 @@
-import fetch from "node-fetch";
 import EnhancedTable from "components/table";
+import useSWR from "swr";
 
-export default function Browse({ requests }) {
-  console.log(requests);
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function Browse() {
+  const { data, error } = useSWR("/api/requests", fetcher);
+  if (error) return <div>failed to load</div>;
+
   return (
     <div className="container p-2 mt-0 mx-auto">
       <h1 className="title">Browse</h1>
-      <EnhancedTable data={requests} />
+      {data && data.length ? (
+        <EnhancedTable data={data} />
+      ) : (
+        <div>loading...</div>
+      )}
     </div>
   );
-}
-
-export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/requests");
-  const requests = await res.json();
-
-  return {
-    props: {
-      requests,
-    },
-  };
 }
