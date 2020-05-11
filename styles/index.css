@@ -15,4 +15,8 @@
   line-height: 1.15;
 }
 
+.container {
+  @apply w-full h-full;
+}
+
 @tailwind utilities;
