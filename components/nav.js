@@ -8,7 +8,7 @@ const links = [
 export default function Nav() {
   return (
     <nav>
-      <ul className="flex justify-between items-center p-8">
+      <ul className="flex flex-wrap justify-between items-center text-white bg-primary p-2 h-16">
         <li>
           <Link href="/">
             <a className="text-blue-500 no-underline">Home</a>

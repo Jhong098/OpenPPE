@@ -1,7 +1,16 @@
 module.exports = {
   purge: ["./components/**/*.js", "./pages/**/*.js"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#455A64',
+        light_primary: '#CFD8DC',
+        primary_text: '#F6F6F6'
+      }
+    },
+    container: {
+      center: true,
+    },
   },
   variants: {},
   plugins: [],
