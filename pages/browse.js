@@ -1,6 +1,9 @@
 import EnhancedTable from "components/table";
+import { useEffect } from "react";
 import Grid from "components/browseGrid";
+import Filters from "components/filters";
 import useSWR from "swr";
+import { useRequests } from "contexts/requests";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -237,13 +240,39 @@ const data = [
 
 export default function Browse() {
   // const { data, error } = useSWR("/api/requests", fetcher);
+  const [state, dispatch] = useRequests();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // const res = await fetch("/api/requests");
+        // const json = await res.json();
+        await dispatch({
+          type: "FETCH_REQUESTS",
+          payload: data,
+        });
+      } catch (error) {
+        dispatch({
+          type: "FETCH_ERROR",
+          payload: error,
+        });
+      }
+    };
+    fetchData();
+  }, [dispatch]);
 
   // if (error) return <div>failed to load</div>;
 
   return (
     <div className="container p-2 mt-0 mx-auto">
       <h1 className="title">Browse</h1>
-      {data && data.length ? <Grid data={data} /> : <div>loading...</div>}
+      <Filters />
+      {state.message && <p>{state.message}</p>}
+      {state.requests && state.requests.length ? (
+        <Grid data={state.requests} />
+      ) : (
+        <div>loading...</div>
+      )}
     </div>
   );
 }
