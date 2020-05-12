@@ -8,8 +8,10 @@ const navLink = (href, name, sublinks=null) =>{
     const color = selected ? 'bg-primary_text' : '';
     return(
         <li class={`py-6 ${color}`}>
-            <Link href={href}>{name}</Link>
-            {sublinks && (selected ? <ChevronDown class="relative"/> : <ChevronUp class="relative"/>)}
+            <div class="flex justify-center">
+                <Link href={href}><a>{name}</a></Link>
+                {sublinks && (selected ? <ChevronDown class="relative"/> : <ChevronUp class="relative"/>)}
+            </div>
             {sublinks && (selected ? (<ul>{sublinks.map((option)=>(
                 <li><Link href={option.href}><a> {option.name} </a></Link></li>
             ))}</ul>): null)}
