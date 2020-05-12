@@ -1,10 +1,11 @@
 import fetch from "node-fetch";
-import EnhancedTable from "components/table";
 import LeftSidebar from "components/leftSidebar";
 import Nav from "components/nav";
+import { useRouter } from 'next/router'
 
 export default function Orders({ }) {
-
+  const router = useRouter()
+  const { status } = router.query
   return (
     <>
         <Nav/>
