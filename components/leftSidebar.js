@@ -7,17 +7,17 @@ const navLink = (href, name, sublinks=null) =>{
     const orders_selected = router.pathname.split('/')[1] === "orders"
     const oneOfOrders = href.split('/')[1] === "orders"
     const selected = router.pathname === href
-    const color = (selected && !orders_selected) || (oneOfOrders && orders_selected) ? 'bg-primary_text' : '';
+    const color = (selected && !orders_selected) || (oneOfOrders && orders_selected) ? 'bg-text_white' : '';
     return(
-        <li class={`py-6 ${color}`}>
-            <div class="flex justify-center">
+        <li className={`py-6 ${color}`}>
+            <div className="flex justify-center">
                 <Link href={href}><a>{name}</a></Link>
-                {sublinks && (orders_selected ? <ChevronDown class="relative"/> : <ChevronUp class="relative"/>)}
+                {sublinks && (orders_selected ? <ChevronDown className="relative"/> : <ChevronUp className="relative"/>)}
             </div>
             {sublinks && (orders_selected ? (<ul>{sublinks.map((option)=>{
                 const isSelected = option.href === router.asPath;
                 return (
-                    <li class={isSelected ? "text-primary":""}>
+                    <li key={option.name} className={isSelected ? "text-primary":""}>
                         <Link href='/orders/[status]' as={option.href}><a> {option.name} </a></Link>
                     </li>
                 )

@@ -282,7 +282,7 @@ export default function Browse() {
 
   return (
     <>
-      <Nav>
+        <Nav/>
         <div className="container p-2 mt-0 mx-auto">
           <h1 className="title">Browse</h1>
           <Filters />
@@ -293,7 +293,6 @@ export default function Browse() {
             <div>loading...</div>
           )}
         </div>
-      </Nav>
     </>
   );
 }

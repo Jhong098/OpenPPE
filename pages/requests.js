@@ -10,8 +10,7 @@ export default function Requests({  }) {
         <Nav/>
         <LeftSidebar/>
         <div className="container p-2 mt-0 mx-auto">
-        <h1 className="title">Requests</h1>
-
+            <h1 className="title">Requests</h1>
         </div>
     </>
   );
