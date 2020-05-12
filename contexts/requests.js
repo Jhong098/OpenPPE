@@ -4,6 +4,7 @@ const RequestsContext = React.createContext();
 
 const initialState = {
   options: {},
+  maxPriceFilter: "",
   filters: { categories: [], sizes: [], statuses: [] },
   requests: [],
   message: "", // ok/error
@@ -28,6 +29,12 @@ const getFilters = (requests) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "FILTER_PRICE":
+      console.log(action.payload);
+      return {
+        ...state,
+        maxPriceFilter: action.payload,
+      };
     case "FILTER_REQUESTS":
       return {
         ...state,

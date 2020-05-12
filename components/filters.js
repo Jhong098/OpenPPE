@@ -1,4 +1,5 @@
 import Select from "react-select";
+import { useState } from "react";
 import { useRequests } from "contexts/requests";
 
 export default function Filters() {
@@ -11,10 +12,17 @@ export default function Filters() {
     });
   };
 
-  const { filters, options } = state;
+  const handleMaxPriceChange = (event) => {
+    dispatch({
+      type: "FILTER_PRICE",
+      payload: event.target.value,
+    });
+  };
+
+  const { filters, options, maxPriceFilter } = state;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
       {Object.entries(options).map(([filter, options]) => (
         <Select
           key={filter}
@@ -25,6 +33,15 @@ export default function Filters() {
           onChange={(selected) => handleFilterUpdate(selected, filter)}
         />
       ))}
+
+      <input
+        type="number"
+        className="px-2"
+        min="0"
+        value={maxPriceFilter}
+        onChange={handleMaxPriceChange}
+        placeholder="Max Unit Price"
+      />
     </div>
   );
 }

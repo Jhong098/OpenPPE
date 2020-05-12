@@ -263,11 +263,13 @@ export default function Browse() {
 
   // if (error) return <div>failed to load</div>;
 
-  const { filters, requests, message } = state;
+  const { filters, requests, message, maxPriceFilter } = state;
 
   const filterRequests = () => {
     return requests.filter(
-      ({ category, size, status }) =>
+      ({ category, size, status, unit_cost }) =>
+        (maxPriceFilter === "" ||
+          parseFloat(unit_cost) < parseFloat(maxPriceFilter)) &&
         (filters.categories.length === 0 ||
           filters.categories.map((f) => f.value).includes(category)) &&
         (filters.sizes.length === 0 ||
