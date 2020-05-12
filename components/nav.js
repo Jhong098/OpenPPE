@@ -11,12 +11,17 @@ export default function Nav() {
       <ul className="flex flex-wrap justify-between items-center text-white bg-primary p-2 h-16">
         <li>
           <Link href="/">
-            <a className="text-blue-500 no-underline">Home</a>
+            <a>Home</a>
           </Link>
         </li>
         <li>
           <Link href="/browse">
-            <a className="text-blue-500 no-underline">Browse</a>
+            <a>Browse</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/requests">
+            <a>Requests</a>
           </Link>
         </li>
       </ul>

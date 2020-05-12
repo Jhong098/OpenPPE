@@ -1,17 +1,16 @@
 import Head from "next/head";
-import Nav from "../components/nav";
+import Nav from "components/nav";
 import Link from "next/link";
 
 export default function IndexPage() {
   return (
-    <div className="container">
+    <>
       <Head>
         <title>Open PPE</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Nav />
       <main>
-        <Nav />
         <div className="hero flex-center">
           <img src="/Logox2.png" alt="logo" />
           <h2 className="text-lg font-semibold">
@@ -24,6 +23,6 @@ export default function IndexPage() {
           </Link>
         </div>
       </main>
-    </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Grid from "components/browseGrid";
 import Filters from "components/filters";
 import useSWR from "swr";
+import Nav from "components/nav";
 import { useRequests } from "contexts/requests";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -280,15 +281,19 @@ export default function Browse() {
   };
 
   return (
-    <div className="container p-2 mt-0 mx-auto">
-      <h1 className="title">Browse</h1>
-      <Filters />
-      {message && <p>{message}</p>}
-      {requests && requests.length ? (
-        <Grid data={filterRequests()} />
-      ) : (
-        <div>loading...</div>
-      )}
-    </div>
+    <>
+      <Nav>
+        <div className="container p-2 mt-0 mx-auto">
+          <h1 className="title">Browse</h1>
+          <Filters />
+          {message && <p>{message}</p>}
+          {requests && requests.length ? (
+            <Grid data={filterRequests()} />
+          ) : (
+            <div>loading...</div>
+          )}
+        </div>
+      </Nav>
+    </>
   );
 }
