@@ -1,25 +1,28 @@
 import Link from "next/link";
+import Button from "components/button"
 
 const links = [
-  { href: "https://github.com/zeit/next.js", label: "GitHub" },
-  { href: "https://nextjs.org/docs", label: "Docs" },
+  { href: "/", label: "Home" },
+  { href: "/browse", label: "Browse" },
+  { href: "/requests", label: "Requests" },
 ];
 
 export default function Nav() {
   return (
-    <nav>
-      <ul className="flex justify-between items-center p-8">
-        <li>
-          <Link href="/">
-            <a className="text-blue-500 no-underline">Home</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/browse">
-            <a className="text-blue-500 no-underline">Browse</a>
-          </Link>
-        </li>
+    <nav className="flex flex-wrap justify-between items-center text-white bg-dark_primary px-8 h-16">
+      <ul className="flex items-center">
+        {links.map((link)=>(
+            <li key={link.label} className="px-4">
+                <Link href={link.href}>
+                    <a>{link.label}</a>
+                </Link>
+            </li>
+        ))}
       </ul>
+      <div>
+        <Button href='#'>Signup</Button>
+        <Button href='#'>Login</Button>
+      </div>
     </nav>
   );
 }
