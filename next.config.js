@@ -10,7 +10,6 @@ module.exports = {
     return config;
   },
   env: {
-    MONGO_DEV: "mongodb://jason:covid19@ds211708.mlab.com:11708/open_ppe",
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
     FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
     FIREBASE_DATABASE_URL: process.env.FIREBASE_DATABASE_URL,

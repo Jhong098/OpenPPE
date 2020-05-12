@@ -8,7 +8,7 @@ Web platform that connects those in need of medical supplies and those who can p
 
 ## Technologies
 
-[Next.js](https://nextjs.org/) + [TailwindCSS](https://tailwindcss.com/) + [MongoDB](https://www.mongodb.com/)
+[Next.js](https://nextjs.org/) + [TailwindCSS](https://tailwindcss.com/) + [Firebase](https://firebase.google.com/)
 
 ## Milestones
 
