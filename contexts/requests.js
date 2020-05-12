@@ -42,10 +42,11 @@ const reducer = (state, action) => {
       };
     case "FETCH_REQUESTS":
       console.log(action.payload);
+      const newRequests = [...state.requests, ...action.payload];
       return {
         ...state,
-        requests: action.payload,
-        options: getFilters(action.payload),
+        requests: newRequests,
+        options: getFilters(newRequests),
       };
     case "FETCH_ERROR":
       return {
