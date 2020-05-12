@@ -1,8 +1,16 @@
 @tailwind base;
 @tailwind components;
 
+body {
+  background-color: #edf2f7;
+}
+
 .btn-blue {
   @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+}
+
+.flex-center {
+  @apply flex items-center justify-center flex-col;
 }
 
 .hero {
@@ -10,13 +18,21 @@
 }
 
 .title {
-  @apply text-5xl text-center;
+  @apply text-5xl text-left;
   color: #333;
   line-height: 1.15;
 }
 
 .container {
-  @apply w-full h-full;
+  @apply w-full h-full mx-auto my-0;
+}
+
+.card {
+  @apply flex bg-white items-start flex-col justify-evenly rounded h-64 p-4;
+}
+
+.badge {
+  @apply flex items-center h-8 p-2 rounded-full;
 }
 
 @tailwind utilities;
