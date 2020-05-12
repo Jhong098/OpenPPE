@@ -7,7 +7,7 @@ export default function Filters() {
   const handleFilterUpdate = (selectedOption, filter) => {
     dispatch({
       type: "FILTER_REQUESTS",
-      payload: { [filter]: selectedOption },
+      payload: { [filter]: selectedOption || [] },
     });
   };
 

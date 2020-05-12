@@ -263,13 +263,27 @@ export default function Browse() {
 
   // if (error) return <div>failed to load</div>;
 
+  const { filters, requests, message } = state;
+
+  const filterRequests = () => {
+    return requests.filter(
+      ({ category, size, status }) =>
+        (filters.categories.length === 0 ||
+          filters.categories.map((f) => f.value).includes(category)) &&
+        (filters.sizes.length === 0 ||
+          filters.sizes.map((f) => f.value).includes(size)) &&
+        (filters.statuses.length === 0 ||
+          filters.statuses.map((f) => f.value).includes(status))
+    );
+  };
+
   return (
     <div className="container p-2 mt-0 mx-auto">
       <h1 className="title">Browse</h1>
       <Filters />
-      {state.message && <p>{state.message}</p>}
-      {state.requests && state.requests.length ? (
-        <Grid data={state.requests} />
+      {message && <p>{message}</p>}
+      {requests && requests.length ? (
+        <Grid data={filterRequests()} />
       ) : (
         <div>loading...</div>
       )}

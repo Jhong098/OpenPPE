@@ -4,7 +4,7 @@ const RequestsContext = React.createContext();
 
 const initialState = {
   options: {},
-  filters: { categories: "", sizes: "", statuses: "" },
+  filters: { categories: [], sizes: [], statuses: [] },
   requests: [],
   message: "", // ok/error
 };
@@ -17,7 +17,7 @@ const getFilters = (requests) => {
   for (let i = 0; i < requests.length; i++) {
     categories.add(requests[i].category);
     sizes.add(requests[i].size);
-    statuses.add(requests[i].size);
+    statuses.add(requests[i].status);
   }
   return {
     categories: Array.from(categories),
@@ -29,7 +29,6 @@ const getFilters = (requests) => {
 const reducer = (state, action) => {
   switch (action.type) {
     case "FILTER_REQUESTS":
-      console.log(action.payload);
       return {
         ...state,
         filters: { ...state.filters, ...action.payload },
