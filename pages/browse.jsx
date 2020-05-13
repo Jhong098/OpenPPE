@@ -2,12 +2,9 @@ import { useEffect, useState, useCallback } from "react";
 import Grid from "components/browseGrid";
 import Filters from "components/filters";
 import { useRequests } from "contexts/requests";
-import firebase from "firebase/app";
-import "firebase/firestore";
-import initFirebase from "utils/auth/initFirebase";
+import { getRequests } from "utils/db";
 
 const ITEMS_PER_PAGE = 10;
-initFirebase();
 
 export default function Browse() {
   const [state, dispatch] = useRequests();
@@ -19,22 +16,17 @@ export default function Browse() {
   };
 
   const fetchData = useCallback(async () => {
-    const db = firebase.firestore();
-    const query = db
-      .collection("requests")
-      .orderBy("_id")
-      .startAt(startAt)
-      .limit(ITEMS_PER_PAGE);
-
     try {
-      const snapshot = await query.get();
-      const requests = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
+      // const snapshot = await query.get();
+      // const requests = snapshot.docs.map((doc) => ({
+      //   ...doc.data(),
+      //   id: doc.id,
+      // }));
+      const data = await getRequests(startAt, ITEMS_PER_PAGE);
+      console.log(data);
       await dispatch({
         type: "FETCH_REQUESTS",
-        payload: requests,
+        payload: data,
       });
     } catch (error) {
       dispatch({

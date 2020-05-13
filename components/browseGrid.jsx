@@ -7,7 +7,6 @@ import useOnClickOutside from "utils/hooks/useClickOutside";
 export default function BrowseGrid({ data }) {
   const [selectedCard, setSelectedCard] = useState(null);
   const ref = useRef();
-  console.log(selectedCard);
 
   useOnClickOutside(ref, () => setSelectedCard(null));
 
