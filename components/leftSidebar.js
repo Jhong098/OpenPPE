@@ -33,8 +33,8 @@ export default function LeftSideBar() {
     ]
 
   return (
-    <div class="bg-light_primary text-center fixed bottom-0 mt-16 top-0 left-0">
-        <ul class="w-32">
+    <div class="bg-light_primary text-center fixed bottom-0 mt-navHeight top-0 left-0">
+        <ul class="w-leftPanelWidth">
             {navLink("/requests", "Requests")}
             {navLink(sublinks[0].href, "Orders", sublinks)}
         </ul>

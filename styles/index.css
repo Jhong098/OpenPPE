@@ -27,6 +27,10 @@ body {
   @apply w-full h-full mx-auto my-0;
 }
 
+.boundedContainer {
+  @apply w-full h-full ml-leftPanelWidth my-0;
+}
+
 .card {
   @apply flex bg-white items-start flex-col justify-evenly rounded h-64 p-4;
 }
