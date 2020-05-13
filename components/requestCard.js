@@ -15,7 +15,7 @@ const StatusBadge = ({ status }) => {
   );
 };
 
-export default function RequestCard({ data }) {
+export default function RequestCard({ data, isExpanded = false }) {
   const {
     category,
     location,
@@ -28,7 +28,7 @@ export default function RequestCard({ data }) {
     status,
   } = data;
   return (
-    <div className="card relative hover:opacity-75">
+    <div className={`${isExpanded ? "expanded-card" : "card"} relative`}>
       <div className="flex w-full items-center justify-between">
         <StatusBadge status={status} />
         <button className="hover:opacity-75 hover:underline">
