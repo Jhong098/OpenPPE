@@ -1,27 +1,17 @@
-import fetch from "node-fetch";
-import EnhancedTable from "components/table";
-import LeftSidebar from "components/leftSidebar";
 import Nav from "components/nav";
 import Button from "components/button";
-import { useSidebar } from "contexts/sidebar";
+import RightSidebar, {useToolbar, toolbarConstants} from "components/rightSidebar";
 
 export default function Requests() {
-  const [state, dispatch] = useSidebar();
-  
-  const toggleEdit = () =>{
-    dispatch({
-      type: "OPEN",
-      payload: "editRequest",
-    });
-  }
+  const toolbarOptions = useToolbar();
   
   return (
     <>
-      <Nav/>
-      <LeftSidebar/>
-      <div className="boundedContainer">
+      <Nav toolbarOptions={toolbarOptions}/>
+      <RightSidebar toolbarOptions={toolbarOptions}/>
+      <div>
         <h1 className="title">Requests</h1>
-        <Button onClick={()=>toggleEdit()}>Edit Request</Button>
+        <Button onClick={()=>toolbarOptions.handleToolbarToggle(toolbarConstants.EDIT_REQUEST)}>Edit Request</Button>
       </div>
     </>
   );

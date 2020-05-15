@@ -17,9 +17,6 @@ module.exports = {
         leftPanelWidth: '8rem',
         navHeight: '4rem'
       },
-      zIndex: {
-        '-10': '-10',
-      }
     },
   },
 };

@@ -1,15 +1,18 @@
 import Head from "next/head";
 import Nav from "components/nav";
 import Link from "next/link";
+import RightSidebar, {useToolbar} from "components/rightSidebar";
 
 export default function IndexPage() {
+  const toolbarOptions = useToolbar();
   return (
     <>
       <Head>
         <title>Open PPE</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav />
+      <Nav toolbarOptions={toolbarOptions}/>
+      <RightSidebar toolbarOptions={toolbarOptions}/>
       <main>
         <div className="hero flex-center">
           <img src="/Logox2.png" alt="logo" />
