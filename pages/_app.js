@@ -4,7 +4,7 @@ import { RequestsProvider } from "contexts/requests";
 function MyApp({ Component, pageProps }) {
   return (
     <RequestsProvider>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
     </RequestsProvider>
   );
 }

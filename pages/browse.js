@@ -5,6 +5,7 @@ import Filters from "components/filters";
 import useSWR from "swr";
 import Nav from "components/nav";
 import { useRequests } from "contexts/requests";
+import RightSidebar, {useToolbar} from "components/rightSidebar";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -242,6 +243,7 @@ const data = [
 export default function Browse() {
   // const { data, error } = useSWR("/api/requests", fetcher);
   const [state, dispatch] = useRequests();
+  const toolbarOptions = useToolbar();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -282,7 +284,8 @@ export default function Browse() {
 
   return (
     <>
-        <Nav/>
+        <Nav toolbarOptions={toolbarOptions}/>
+        <RightSidebar toolbarOptions={toolbarOptions}/>
         <div className="container p-2 mt-0 mx-auto">
           <h1 className="title">Browse</h1>
           <Filters />

@@ -13,6 +13,10 @@ module.exports = {
         text_white: "#F6F6F6",
         text_black: "#212121",
       },
+      spacing: {
+        leftPanelWidth: '8rem',
+        navHeight: '4rem'
+      },
     },
   },
 };
