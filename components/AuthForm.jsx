@@ -67,7 +67,7 @@ function AuthForm(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
       {["signup", "signin", "forgotpass"].includes(props.type) && (
         <FormField
           name="email"
@@ -113,7 +113,7 @@ function AuthForm(props) {
         ></FormField>
       )}
 
-      <div className="field">
+      <div className="field mt-2 text-text_white">
         <p className="control">
           {/* <Button
             state={pending ? "loading" : "normal"}

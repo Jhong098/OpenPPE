@@ -68,14 +68,14 @@ function useProvideAuth() {
       .then((response) => handleUser(response.user));
   };
 
-  const signout = () => {
+  const signout = async () => {
     return firebase
       .auth()
       .signOut()
       .then(() => handleUser(false));
   };
 
-  const sendPasswordResetEmail = (email) => {
+  const sendPasswordResetEmail = async (email) => {
     return firebase
       .auth()
       .sendPasswordResetEmail(email)

@@ -95,7 +95,7 @@ function SettingsGeneral(props) {
             required: "Please enter your email",
           })}
         ></FormField>
-        <div className="field">
+        <div className="field text-text_white">
           <div className="control">
             <StyledButton>Save</StyledButton>
           </div>

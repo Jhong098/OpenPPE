@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FormAlert from "./FormAlert";
 import AuthForm from "./AuthForm";
 import AuthSocial from "./AuthSocial";
+import AuthFooter from "./AuthFooter";
 import { useRouter } from "next/router";
 
 function Auth(props) {
@@ -57,6 +58,7 @@ function Auth(props) {
           )}
         </>
       )}
+      <AuthFooter type={props.type} typeValues={props.typeValues}></AuthFooter>
     </>
   );
 }

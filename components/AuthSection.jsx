@@ -37,8 +37,8 @@ function AuthSection(props) {
 
   return (
     <Section>
-      <div className="text-center w-1/3 mx-auto my-0">
-        <h1 className="text-lg font-semibold mb-4">Welcome</h1>
+      <div className="text-center">
+        <h1 className="text-lg font-semibold mb-4">{typeValues.title}</h1>
         <Auth
           type={currentType}
           typeValues={typeValues}

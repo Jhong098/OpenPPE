@@ -4,6 +4,7 @@ import { Bell } from "react-feather";
 import { toolbarConstants } from "components/rightSidebar";
 import { StyledLink } from "components/button";
 import { useAuth } from "utils/auth";
+import { useRouter } from "next/router";
 
 const links = [
   { href: "/", label: "Home", isPublic: true },
@@ -22,14 +23,22 @@ const Nav = ({ toolbarOptions }) => {
   const [ordersSelected, setOrdersSelected] = useState(false);
   // const { handleToolbarOpen } = toolbarOptions;
   const auth = useAuth();
+  const router = useRouter();
 
   const editProfile = () => {
     setProfileSelected(false);
     // handleToolbarOpen(toolbarConstants.EDIT_PROFILE);
   };
 
+  const handleSignout = async (e) => {
+    e.preventDefault();
+    await auth.signout();
+    console.log("signed out");
+    router.reload();
+  };
+
   const rightNav = () => {
-    if (auth) {
+    if (auth.user) {
       return (
         <div className="flex justify-center items-center">
           <Bell />
@@ -51,18 +60,18 @@ const Nav = ({ toolbarOptions }) => {
                   className="fixed inset-0 h-full w-full bg-black opacity-0 cursor-default"
                 ></button>
                 <div className="flex flex-col absolute z-10 right-0 mt-2 py-2 w-48 bg-primary rounded-lg shadow-xl">
-                  <Link href="/settings" onClick={editProfile}>
-                    <a className="block px-4 py-2 hover:bg-dark_primary">
+                  <Link href="/settings">
+                    <a
+                      className="block px-4 py-2 hover:bg-dark_primary"
+                      onClick={editProfile}
+                    >
                       Account Settings
                     </a>
                   </Link>
                   <Link href="/auth/signout">
                     <a
                       className="block px-4 py-2 hover:bg-dark_primary"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        auth.signout();
-                      }}
+                      onClick={handleSignout}
                     >
                       Sign out
                     </a>

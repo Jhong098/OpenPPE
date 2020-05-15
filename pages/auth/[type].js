@@ -1,21 +1,23 @@
 import React from "react";
 import AuthSection from "components/AuthSection";
 import { useRouter } from "next/router";
+import Nav from "components/nav";
 
 function AuthTypePage(props) {
   const router = useRouter();
   const { type } = router.query;
 
   return (
-    <AuthSection
-      color="white"
-      size="large"
-      backgroundImage=""
-      backgroundImageOpacity={1}
-      type={type}
-      providers={["google", "facebook", "twitter"]}
-      afterAuthPath="/requests"
-    ></AuthSection>
+    <>
+      <Nav />
+      <AuthSection
+        color="white"
+        size="large"
+        type={type}
+        providers={["google", "facebook", "twitter"]}
+        afterAuthPath="/requests"
+      ></AuthSection>
+    </>
   );
 }
 
