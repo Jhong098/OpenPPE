@@ -4,7 +4,6 @@ import { Bell } from "react-feather";
 import { toolbarConstants } from "components/rightSidebar";
 import { StyledLink } from "components/button";
 import { useAuth } from "utils/auth";
-import { useState } from "react";
 
 const links = [
   { href: "/", label: "Home", isPublic: true },
@@ -18,29 +17,29 @@ const orderSublinks = [
   { href: "/orders/cancelled", name: "cancelled" },
 ];
 
-export default function Nav({ toolbarOptions }) {
+const Nav = ({ toolbarOptions }) => {
   const [profileSelected, setProfileSelected] = useState(false);
   const [ordersSelected, setOrdersSelected] = useState(false);
-  const { handleToolbarOpen } = toolbarOptions;
+  // const { handleToolbarOpen } = toolbarOptions;
   const auth = useAuth();
 
   const editProfile = () => {
     setProfileSelected(false);
-    handleToolbarOpen(toolbarConstants.EDIT_PROFILE);
+    // handleToolbarOpen(toolbarConstants.EDIT_PROFILE);
   };
 
   const rightNav = () => {
     if (auth) {
       return (
-        <div class="flex justify-center items-center">
+        <div className="flex justify-center items-center">
           <Bell />
-          <div class="relative pl-8">
+          <div className="relative pl-8">
             <button
               onClick={() => setProfileSelected(!profileSelected)}
-              class="relative h-8 w-8 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white"
+              className="relative h-8 w-8 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white"
             >
               <img
-                class="h-full w-full object-cover"
+                className="h-full w-full object-cover"
                 src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80"
                 alt="Your avatar"
               />
@@ -49,21 +48,17 @@ export default function Nav({ toolbarOptions }) {
               <>
                 <button
                   onClick={() => setProfileSelected(false)}
-                  class="fixed inset-0 h-full w-full bg-black opacity-0 cursor-default"
+                  className="fixed inset-0 h-full w-full bg-black opacity-0 cursor-default"
                 ></button>
-                <div class="absolute z-10 right-0 mt-2 py-2 w-48 bg-primary rounded-lg shadow-xl">
-                  <Link
-                    href="/settings"
-                    onClick={editProfile}
-                    class="block px-4 py-2 hover:bg-dark_primary"
-                  >
-                    Account settings
+                <div className="flex flex-col absolute z-10 right-0 mt-2 py-2 w-48 bg-primary rounded-lg shadow-xl">
+                  <Link href="/settings" onClick={editProfile}>
+                    <a className="block px-4 py-2 hover:bg-dark_primary">
+                      Account Settings
+                    </a>
                   </Link>
-                  <Link
-                    href="/auth/signout"
-                    class="block px-4 py-2 hover:bg-dark_primary"
-                  >
+                  <Link href="/auth/signout">
                     <a
+                      className="block px-4 py-2 hover:bg-dark_primary"
                       onClick={(e) => {
                         e.preventDefault();
                         auth.signout();
@@ -112,9 +107,9 @@ export default function Nav({ toolbarOptions }) {
               <>
                 <button
                   onClick={() => setOrdersSelected(false)}
-                  class="fixed z-10 inset-0 h-full w-full bg-black opacity-0 cursor-default"
+                  className="fixed z-10 inset-0 h-full w-full bg-black opacity-0 cursor-default"
                 ></button>
-                <div class="absolute z-20 left-0 mt-2 py-2 w-48 bg-primary rounded-lg shadow-xl">
+                <div className="absolute z-20 left-0 mt-2 py-2 w-48 bg-primary rounded-lg shadow-xl">
                   <>
                     {orderSublinks.map((option) => (
                       <Link
@@ -122,10 +117,7 @@ export default function Nav({ toolbarOptions }) {
                         href="/orders/[status]"
                         as={option.href}
                       >
-                        <a
-                          href="#"
-                          class="block px-4 py-2 hover:bg-dark_primary"
-                        >
+                        <a className="block px-4 py-2 hover:bg-dark_primary">
                           {option.name}
                         </a>
                       </Link>
@@ -140,6 +132,6 @@ export default function Nav({ toolbarOptions }) {
       {rightNav()}
     </nav>
   );
-}
+};
 
 export default Nav;

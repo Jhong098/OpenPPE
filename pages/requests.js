@@ -1,9 +1,9 @@
 import Nav from "components/nav";
 import { StyledButton } from "components/button";
-import RightSidebar, {
-  useToolbar,
-  toolbarConstants,
-} from "components/rightSidebar";
+// import RightSidebar, {
+//   useToolbar,
+//   toolbarConstants,
+// } from "components/rightSidebar";
 import React, { useEffect } from "react";
 import { useAuth } from "utils/auth.js";
 import { useRouter } from "next/router";
@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 function Requests(props) {
   const auth = useAuth();
   const router = useRouter();
-  const toolbarOptions = useToolbar();
+  // const toolbarOptions = useToolbar();
 
   // Redirect to signin
   // if not signed in.
@@ -23,8 +23,8 @@ function Requests(props) {
 
   return (
     <div>
-      <Nav toolbarOptions={toolbarOptions} />
-      <RightSidebar toolbarOptions={toolbarOptions} />
+      <Nav />
+      {/* <RightSidebar toolbarOptions={toolbarOptions} /> */}
       <div className="text-center mt-10">
         <h1 className="title">Requests</h1>
         {auth.user ? (
@@ -32,7 +32,7 @@ function Requests(props) {
             <h1 className="font-bold text-xl">
               Hello! You're logged in as {auth.user.email}
             </h1>
-            <StyledButton
+            {/* <StyledButton
               onClick={() =>
                 toolbarOptions.handleToolbarToggle(
                   toolbarConstants.EDIT_REQUEST
@@ -40,7 +40,7 @@ function Requests(props) {
               }
             >
               Edit Request
-            </StyledButton>
+            </StyledButton> */}
           </>
         ) : null}
       </div>

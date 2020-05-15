@@ -9,6 +9,7 @@ const Index = () => {
         <title>Open PPE</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Nav />
       <main>
         <div className="hero flex-center">
           <img src="/Logox2.png" alt="logo" />

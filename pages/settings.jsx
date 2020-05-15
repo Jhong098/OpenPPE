@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SettingsSection from "components/settings/SettingsSection";
 import { useAuth } from "utils/auth.js";
 import { useRouter } from "next/router";
+import Nav from "components/nav";
 
 function SettingsPage(props) {
   const auth = useAuth();
@@ -19,7 +20,12 @@ function SettingsPage(props) {
     return "Loading...";
   }
 
-  return <SettingsSection></SettingsSection>;
+  return (
+    <>
+      <Nav />
+      <SettingsSection></SettingsSection>
+    </>
+  );
 }
 
 export default SettingsPage;
