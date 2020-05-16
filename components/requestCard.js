@@ -1,16 +1,22 @@
 import { Trash } from "react-feather";
 
-const STATUS_TO_COLOR = {
-  canceled: "bg-red-",
-  open: "bg-green-",
-  claimed: "bg-blue-",
+const STATUS_BG_TO_COLOR = {
+  canceled: "bg-red-300",
+  open: "bg-green-300",
+  claimed: "bg-blue-300",
+};
+
+const STATUS_DOT_TO_COLOR = {
+  canceled: "bg-red-500",
+  open: "bg-green-500",
+  claimed: "bg-blue-500",
 };
 
 const StatusBadge = ({ status }) => {
   return (
-    <p className={`badge ${STATUS_TO_COLOR[status] + "300"}`}>
+    <p className={`badge ${STATUS_BG_TO_COLOR[status]}`}>
       <span
-        className={`w-3 h-3 mr-1 rounded-lg ${STATUS_TO_COLOR[status] + "500"}`}
+        className={`w-3 h-3 mr-1 rounded-lg ${STATUS_DOT_TO_COLOR[status]}`}
       ></span>
       <span className="text-xs font-semibold">{status}</span>
     </p>
