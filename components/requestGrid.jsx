@@ -4,7 +4,11 @@ import DetailsPanel from "./detailsPanel";
 import { AnimatePresence } from "framer-motion";
 import useOnClickOutside from "utils/hooks/useClickOutside";
 
-export default function BrowseGrid({ data }) {
+export default function RequestGrid({
+  data,
+  canEdit = false,
+  handleDelete = () => {},
+}) {
   const [selectedCard, setSelectedCard] = useState(null);
   const ref = useRef();
 
@@ -16,7 +20,12 @@ export default function BrowseGrid({ data }) {
         {selectedCard !== null && (
           <div ref={ref}>
             <DetailsPanel>
-              <Card isExpanded data={data[selectedCard]} />
+              <Card
+                isExpanded
+                data={data[selectedCard]}
+                canEdit={canEdit}
+                handleDelete={handleDelete}
+              />
             </DetailsPanel>
           </div>
         )}

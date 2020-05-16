@@ -111,7 +111,7 @@ const Nav = ({ toolbarOptions }) => {
             className="px-4 relative cursor-pointer"
             onClick={() => setOrdersSelected(!ordersSelected)}
           >
-            Orders
+            My Orders
             {ordersSelected ? (
               <>
                 <button

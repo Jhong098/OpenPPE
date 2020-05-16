@@ -1,3 +1,5 @@
+import { Trash } from "react-feather";
+
 const STATUS_TO_COLOR = {
   canceled: "bg-red-",
   open: "bg-green-",
@@ -15,7 +17,12 @@ const StatusBadge = ({ status }) => {
   );
 };
 
-export default function RequestCard({ data, isExpanded = false }) {
+export default function RequestCard({
+  data,
+  isExpanded = false,
+  canEdit = false,
+  handleDelete = () => {},
+}) {
   const {
     category,
     location,
@@ -26,6 +33,7 @@ export default function RequestCard({ data, isExpanded = false }) {
     size,
     unit_cost,
     status,
+    id,
   } = data;
   return (
     <div className={`${isExpanded ? "expanded-card" : "card"} relative`}>
@@ -34,6 +42,11 @@ export default function RequestCard({ data, isExpanded = false }) {
         <button className="hover:opacity-75 hover:underline">
           #{category}
         </button>
+        {canEdit && (
+          <button onClick={() => handleDelete(id)}>
+            <Trash />
+          </button>
+        )}
       </div>
       <h2 className="text-lg font-semibold">
         {name} x {quantity} @ ${unit_cost}/unit

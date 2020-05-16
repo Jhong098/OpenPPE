@@ -23,19 +23,47 @@ export function createUser(uid, data) {
     .set({ uid, ...data }, { merge: true });
 }
 
-/**** ITEMS ****/
-/* Example query functions (modify to your needs) */
-
-export const getRequests = async (startAt, limit) => {
+/** REQUESTS **/
+// get all requests
+export const getRequests = async (startAt = 0, limit = 10) => {
   const query = firestore
     .collection("requests")
-    .orderBy("_id")
+    .orderBy("requested_at")
     .startAt(startAt)
     .limit(limit);
 
   const snapshot = await query.get();
   return snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 };
+
+// get all requests of an user
+export const getRequestsByUser = async (uid, startAt = 0, limit = 10) => {
+  console.log(uid);
+  const query = firestore
+    .collection("requests")
+    .where("requestor_id", "==", uid);
+
+  const snapshot = await query.get();
+  return snapshot.docs.map((doc) => {
+    const data = doc.data();
+    return { ...data, requested_at: data.requested_at.toDate(), id: doc.id };
+  });
+};
+
+// Create a new request
+export function createRequest(data) {
+  return firestore
+    .collection("requests")
+    .add({ ...data, requested_at: firebase.firestore.Timestamp.now() });
+}
+
+// Delete a request
+export function deleteRequest(id) {
+  return firestore.collection("requests").doc(id).delete();
+}
+
+/**** ITEMS ****/
+/* Example query functions (modify to your needs) */
 
 // Fetch all items by owner
 export function useItemsByOwner(owner) {

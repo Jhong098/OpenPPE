@@ -54,7 +54,7 @@ body {
   border-color: #dbdbdb;
   border-radius: 4px;
   height: 2.25em;
-  padding: 0 4px;
+  padding: 0 8px;
 }
 
 .social-divider {
@@ -104,6 +104,11 @@ body {
 
 .tabs li:first-child a {
   border-radius: 4px 0 0 4px;
+}
+
+.center-container {
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 .loader {

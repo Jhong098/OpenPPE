@@ -34,3 +34,7 @@ export function CustomError(code, message) {
   error.code = code;
   return error;
 }
+
+export function getReactSelectOptions(options) {
+  return options.map((option) => ({ label: option, value: option }));
+}

@@ -1,20 +1,28 @@
 import Link from "next/link";
 
-export function StyledButton({ onClick, children }) {
+export function StyledButton({ onClick, children, classNames }) {
   return (
     <button
       onClick={onClick}
-      className="bg-primary hover:bg-dark_primary text-primary_text py-2 px-4 mx-2 rounded"
+      className={
+        classNames +
+        " bg-primary hover:bg-dark_primary text-primary_text py-2 px-4 mx-2 rounded"
+      }
     >
       {children}
     </button>
   );
 }
 
-export function StyledLink({ href, children }) {
+export function StyledLink({ href, children, classNames = "" }) {
   return (
     <Link href={href}>
-      <a className="bg-primary hover:bg-dark_primary text-primary_text py-2 px-4 mx-2 rounded">
+      <a
+        className={
+          classNames +
+          " bg-primary hover:bg-dark_primary text-primary_text py-2 px-4 mx-2 rounded"
+        }
+      >
         {children}
       </a>
     </Link>

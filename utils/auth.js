@@ -26,6 +26,7 @@ function useProvideAuth() {
     if (rawUser) {
       // Get user object in format expected by front-end
       const user = formatUser(rawUser);
+      console.log(rawUser);
 
       // Add or update user in database
       createUser(user.uid, { email: user.email });
@@ -137,6 +138,7 @@ const formatUser = (user) => {
   return {
     uid: user.uid,
     email: user.email,
+    name: user.displayName,
     // Create an array containing the user's providers (password, google, etc).
     providers: user.providerData.map(({ providerId }) => {
       // Get the name for this providerId

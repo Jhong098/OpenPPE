@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import Grid from "components/browseGrid";
+import Grid from "components/requestGrid";
 import Filters from "components/filters";
 import { useRequests } from "contexts/requests";
 import { getRequests } from "utils/db";
@@ -19,26 +19,23 @@ export default function Browse() {
     setCurrentPage(currentPage + 1);
   };
 
-  const fetchData = useCallback(async () => {
-    try {
-      // const snapshot = await query.get();
-      // const requests = snapshot.docs.map((doc) => ({
-      //   ...doc.data(),
-      //   id: doc.id,
-      // }));
-      const data = await getRequests(startAt, ITEMS_PER_PAGE);
-      console.log(data);
-      await dispatch({
-        type: "FETCH_REQUESTS",
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: "FETCH_ERROR",
-        payload: error,
-      });
-    }
-  }, [dispatch]);
+  const fetchData = useCallback(
+    async (more = false) => {
+      try {
+        const data = await getRequests(startAt, ITEMS_PER_PAGE);
+        await dispatch({
+          type: more ? "FETCH_MORE_REQUESTS" : "FETCH_REQUESTS",
+          payload: data,
+        });
+      } catch (error) {
+        dispatch({
+          type: "FETCH_ERROR",
+          payload: error,
+        });
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     fetchData();
@@ -46,7 +43,7 @@ export default function Browse() {
 
   useEffect(() => {
     if (currentPage > 1) {
-      fetchData();
+      fetchData(true);
     }
   }, [currentPage]);
 
