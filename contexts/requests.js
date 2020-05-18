@@ -7,6 +7,7 @@ const initialState = {
   maxPriceFilter: "",
   filters: { categories: [], sizes: [], statuses: [] },
   requests: [],
+  myRequests: [],
   message: "", // ok/error
 };
 
@@ -30,7 +31,6 @@ const getFilters = (requests) => {
 const reducer = (state, action) => {
   switch (action.type) {
     case "FILTER_PRICE":
-      console.log(action.payload);
       return {
         ...state,
         maxPriceFilter: action.payload,
@@ -41,11 +41,22 @@ const reducer = (state, action) => {
         filters: { ...state.filters, ...action.payload },
       };
     case "FETCH_REQUESTS":
-      console.log(action.payload);
       return {
         ...state,
         requests: action.payload,
         options: getFilters(action.payload),
+      };
+    case "FETCH_MORE_REQUESTS":
+      const newRequests = [...state.requests, ...action.payload];
+      return {
+        ...state,
+        requests: newRequests,
+        options: getFilters(newRequests),
+      };
+    case "FETCH_MY_REQUESTS":
+      return {
+        ...state,
+        myRequests: action.payload,
       };
     case "FETCH_ERROR":
       return {

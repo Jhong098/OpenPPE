@@ -8,26 +8,25 @@
     "start": "next start"
   },
   "dependencies": {
-    "@material-ui/core": "^4.9.13",
-    "@material-ui/icons": "^4.9.1",
     "clsx": "^1.1.0",
-    "mongodb": "^3.5.7",
+    "dotenv": "^8.2.0",
+    "firebase": "^7.14.3",
+    "framer-motion": "^1.10.3",
+    "lodash": "^4.17.15",
     "next": "^9.4.0",
-    "next-connect": "^0.6.6",
-    "node-fetch": "^2.6.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-select": "^3.1.0",
     "react-feather": "^2.0.8",
-    "react-table": "^7.0.4",
-    "swr": "^0.2.0",
-    "tailwindcss": "^1.4.6"
+    "react-hook-form": "^5.7.2",
+    "react-select": "^3.1.0",
+    "react-toastify": "^6.0.4",
+    "tailwindcss": "^1.4.6",
+    "postcss-preset-env": "^6.7.0"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
     "eslint-config-wesbos": "0.0.19",
-    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5"
   }
 }

@@ -3,6 +3,7 @@
 
 body {
   background-color: #edf2f7;
+  overflow-x: hidden;
 }
 
 .btn-blue {
@@ -27,12 +28,154 @@ body {
   @apply w-full h-full mx-auto my-0;
 }
 
+.expanded-card {
+  @apply flex h-full items-start flex-col justify-evenly z-10 bg-primary px-8 py-10 text-text_white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
 .card {
   @apply flex bg-white items-start flex-col justify-evenly rounded h-64 p-4;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  opacity: 0.8;
 }
 
 .badge {
   @apply flex items-center h-8 p-2 rounded-full;
+}
+
+.input {
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  max-width: 100%;
+  width: 100%;
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  height: 2.25em;
+  padding: 0 8px;
+}
+
+.social-divider {
+  margin: 1.2rem 0;
+}
+
+.social-button {
+  @apply bg-light_primary border-gray-400 border cursor-pointer text-text_black text-center flex justify-center py-2 px-3;
+}
+
+.social-button.is-loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.social-icon {
+  @apply absolute inline-flex items-center justify-center;
+  height: 1.5em;
+  width: 1.5em;
+  left: 0.75em;
+  margin-left: calc(-0.375em - 1px);
+  margin-right: 0.1875em;
+}
+
+.tabs {
+  @apply mb-6 flex items-stretch justify-between overflow-hidden overflow-x-auto whitespace-no-wrap;
+}
+
+.tabs ul {
+  flex-grow: 1;
+  flex-shrink: 0;
+  @apply flex justify-center;
+}
+
+.tabs li {
+  padding: 0.5em 0;
+}
+
+.tabs a {
+  border: #dbdbdb solid 1px;
+  padding: 0.5em 1em;
+}
+
+.tabs li.is-active a {
+  @apply bg-dark_primary border-gray-800 text-text_white;
+}
+
+.tabs li:first-child a {
+  border-radius: 4px 0 0 4px;
+}
+
+.center-container {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.loader {
+  font-size: 10px;
+  text-indent: -9999em;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 42%
+  );
+  background: -webkit-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 42%
+  );
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 42%
+  );
+  background: linear-gradient(
+    to right,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 42%
+  );
+  position: relative;
+  animation: load3 1.4s infinite linear;
+  transform: translateZ(0);
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #ffffff;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+}
+.loader:after {
+  @apply bg-light_primary;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: "";
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 @tailwind utilities;
