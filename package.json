@@ -11,8 +11,6 @@
     "clsx": "^1.1.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.14.3",
-    "firebase-admin": "^8.12.1",
-    "firestore-pagination-hook": "^1.0.0",
     "framer-motion": "^1.10.3",
     "lodash": "^4.17.15",
     "next": "^9.4.0",
