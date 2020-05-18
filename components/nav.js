@@ -33,7 +33,6 @@ const Nav = ({ toolbarOptions }) => {
   const handleSignout = async (e) => {
     e.preventDefault();
     await auth.signout();
-    console.log("signed out");
     router.reload();
   };
 

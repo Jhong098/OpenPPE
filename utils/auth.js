@@ -26,7 +26,6 @@ function useProvideAuth() {
     if (rawUser) {
       // Get user object in format expected by front-end
       const user = formatUser(rawUser);
-      console.log(rawUser);
 
       // Add or update user in database
       createUser(user.uid, { email: user.email });

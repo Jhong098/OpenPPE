@@ -21,7 +21,6 @@ function Requests(props) {
   const fetchRequests = useCallback(async () => {
     try {
       const data = await getRequestsByUser(auth.user.uid);
-      console.log(data);
       dispatch({
         type: "FETCH_MY_REQUESTS",
         payload: data,
@@ -45,8 +44,6 @@ function Requests(props) {
   }, [auth, router]);
 
   const { myRequests } = state;
-
-  console.log(myRequests);
 
   const handleDelete = async (id) => {
     setPending(true);

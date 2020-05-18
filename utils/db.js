@@ -38,7 +38,6 @@ export const getRequests = async (startAt = 0, limit = 10) => {
 
 // get all requests of an user
 export const getRequestsByUser = async (uid, startAt = 0, limit = 10) => {
-  console.log(uid);
   const query = firestore
     .collection("requests")
     .where("requestor_id", "==", uid);

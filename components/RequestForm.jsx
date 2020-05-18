@@ -22,7 +22,6 @@ const RequestForm = () => {
     // Show pending indicator
     setPending(true);
     const doc = { ...data, requestor: name, status: "open", requestor_id: uid };
-    console.log(doc);
     try {
       await createRequest(doc);
     } catch (err) {
