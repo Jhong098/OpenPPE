@@ -5,7 +5,7 @@ const CreateRequest = () => {
   return (
     <>
       <Nav />
-      <RequestForm />
+      <RequestForm formTitle="New Request" />
     </>
   );
 };

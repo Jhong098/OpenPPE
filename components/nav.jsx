@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Bell } from "react-feather";
-import { toolbarConstants } from "components/rightSidebar";
 import { StyledLink } from "components/button";
 import { useAuth } from "utils/auth";
 import { useRouter } from "next/router";
@@ -18,16 +17,15 @@ const orderSublinks = [
   { href: "/orders/cancelled", name: "cancelled" },
 ];
 
-const Nav = ({ toolbarOptions }) => {
+const Nav = () => {
   const [profileSelected, setProfileSelected] = useState(false);
   const [ordersSelected, setOrdersSelected] = useState(false);
-  // const { handleToolbarOpen } = toolbarOptions;
+
   const auth = useAuth();
   const router = useRouter();
 
   const editProfile = () => {
     setProfileSelected(false);
-    // handleToolbarOpen(toolbarConstants.EDIT_PROFILE);
   };
 
   const handleSignout = async (e) => {
@@ -95,7 +93,7 @@ const Nav = ({ toolbarOptions }) => {
     <nav className="flex flex-wrap justify-between items-center text-white bg-dark_primary px-8 h-16">
       <ul className="flex items-center">
         {links.map(({ label, href, isPublic }) => (
-          <>
+          <div key={label}>
             {isPublic || auth.user ? (
               <li key={label} className="px-4">
                 <Link href={href}>
@@ -103,7 +101,7 @@ const Nav = ({ toolbarOptions }) => {
                 </Link>
               </li>
             ) : null}
-          </>
+          </div>
         ))}
         {auth.user ? (
           <li

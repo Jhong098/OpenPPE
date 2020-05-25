@@ -5,8 +5,6 @@ import { useRequests } from "contexts/requests";
 import { getRequests } from "utils/db";
 import Nav from "components/nav";
 
-// import { useToolbar } from "components/rightSidebar";
-
 const ITEMS_PER_PAGE = 10;
 
 export default function Browse() {

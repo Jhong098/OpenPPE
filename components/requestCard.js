@@ -1,4 +1,5 @@
 import { Trash } from "react-feather";
+import RequestForm from "./RequestForm";
 
 const STATUS_BG_TO_COLOR = {
   canceled: "bg-red-300",
@@ -43,27 +44,33 @@ export default function RequestCard({
   } = data;
   return (
     <div className={`${isExpanded ? "expanded-card" : "card"} relative`}>
-      <div className="flex w-full items-center justify-between">
-        <StatusBadge status={status} />
-        <button className="hover:opacity-75 hover:underline">
-          #{category}
-        </button>
-        {canEdit && (
-          <button onClick={() => handleDelete(id)}>
-            <Trash />
-          </button>
-        )}
-      </div>
-      <h2 className="text-lg font-semibold">
-        {name} x {quantity} @ ${unit_cost}/unit
-      </h2>
-      <p className="text-sm text-gray-500">{location}</p>
-      <p className="text-xs text-gray-400">
-        <span className="text-sm text-gray-800">
-          <button>{requestor}</button>
-        </span>
-        , {new Date(requested_at).toLocaleString()}
-      </p>
+      {isExpanded ? (
+        <RequestForm formTitle="Edit Request" requestData={data} isEdit />
+      ) : (
+        <>
+          <div className="flex w-full items-center justify-between">
+            <StatusBadge status={status} />
+            <button className="hover:opacity-75 hover:underline">
+              #{category}
+            </button>
+            {canEdit && (
+              <button onClick={() => handleDelete(id)}>
+                <Trash />
+              </button>
+            )}
+          </div>
+          <h2 className="text-lg font-semibold">
+            {name} x {quantity} @ ${unit_cost}/unit
+          </h2>
+          <p className="text-sm text-gray-500">{location}</p>
+          <p className="text-xs text-gray-400">
+            <span className="text-sm text-gray-800">
+              <button>{requestor}</button>
+            </span>
+            , {new Date(requested_at).toLocaleString()}
+          </p>
+        </>
+      )}
     </div>
   );
 }

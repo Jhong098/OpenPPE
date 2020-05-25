@@ -29,7 +29,7 @@ body {
 }
 
 .expanded-card {
-  @apply flex h-full items-start flex-col justify-evenly z-10 bg-primary px-8 py-10 text-text_white;
+  @apply fixed flex h-full items-start flex-col justify-evenly z-10 bg-white px-10 py-10 text-text_black;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 

@@ -1,9 +1,5 @@
 import Nav from "components/nav";
-import { StyledButton, StyledLink } from "components/button";
-// import RightSidebar, {
-//   useToolbar,
-//   toolbarConstants,
-// } from "components/rightSidebar";
+import { StyledLink } from "components/button";
 import React, { useEffect, useCallback, useState } from "react";
 import { useAuth } from "utils/auth.js";
 import { useRouter } from "next/router";
@@ -11,12 +7,11 @@ import { useRequests } from "contexts/requests";
 import { getRequestsByUser, deleteRequest } from "utils/db";
 import Grid from "components/requestGrid";
 
-function Requests(props) {
+function Requests() {
   const auth = useAuth();
   const router = useRouter();
   const [state, dispatch] = useRequests();
   const [pending, setPending] = useState(false);
-  // const toolbarOptions = useToolbar();
 
   const fetchRequests = useCallback(async () => {
     try {
@@ -76,15 +71,6 @@ function Requests(props) {
                 handleDelete={handleDelete}
               />
             ) : null}
-            {/* <StyledButton
-              onClick={() =>
-                toolbarOptions.handleToolbarToggle(
-                  toolbarConstants.EDIT_REQUEST
-                )
-              }
-            >
-              Edit Request
-            </StyledButton> */}
           </>
         ) : null}
       </div>
